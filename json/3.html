@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>3</title>
+</head>
+<body>
+  <script>
+    var json_string = '{"Cars":['+
+                  '{"plateNumber":"ABC-123", "color":"red"},'+
+                  '{"plateNumber":"ABC-456", "color":"orange"},'+
+                  '{"plateNumber":"ABC-789", "color":"yellow"}'+
+              ']}';
+    var result = JSON.parse(json_string);
+    for (var i = 0; i < result.Cars.length; i++) {
+      document.write("plateNumber: "+result.Cars[i].plateNumber+" color:"+result.Cars[i].color+"<br>");
+    }
+    console.log(result);
+    document.write("類型:"+typeof(result));
+    console.log("類型"+typeof(result));
+  </script>
+</body>
+</html>

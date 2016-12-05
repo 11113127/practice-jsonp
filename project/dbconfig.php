@@ -1,0 +1,9 @@
+<?php
+header("Content-Type:text/html; charset=utf-8");
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "test";
+mysql_connect($dbhost,$dbuser,$dbpass) or die('cannot connect to the server'); 
+mysql_select_db($dbname) or die('database selection problem');
+?>

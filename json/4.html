@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>4</title>
+</head>
+<body>
+	<table id="content_txt"></table>
+
+	<script>
+		var content_txt = document.querySelector("#content_txt");
+
+		var request_txt;
+		if (!!window.XMLHttpRequest) {
+			request_txt = new XMLHttpRequest();
+		} else {
+			request_txt = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		request_txt.open("GET", "extend/txt.txt");
+		request_txt.send();
+
+		request_txt.onreadystatechange = function(){
+			var txt;
+			if (request_txt.readyState == 4 && request_txt.status == 200) {
+				txt = JSON.parse(request_txt.responseText);
+				setTable(txt)
+			}
+		}
+
+		function setTable(txt){
+			var y,z;
+			var table = "<tr><th>plateNumber</th><th>color</th></tr>";
+			for (var i = 0; i < txt.length; i++) {
+				table += "<tr><td>"+txt[i].plateNumber+"</td><td>"+txt[i].color+"</td></tr>";
+			}
+			content_txt.innerHTML = table;
+		}
+	</script>
+</body>
+</html>

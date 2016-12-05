@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>1</title>
+</head>
+<body>
+	<table id=content_xml></table>
+	<hr>
+	<table id="content_json"></table>
+
+	<script>
+		var content_xml = document.querySelector("#content_xml");
+		var content_json = document.querySelector("#content_json");
+
+		var request_xml;
+		if (!!window.XMLHttpRequest) {
+			request_xml = new XMLHttpRequest();
+		} else {
+			request_xml = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		request_xml.open("GET", "http://127.0.0.1/jsonp/json/xml_json/cars.xml");
+		request_xml.send();
+
+		request_xml.onreadystatechange = function(){
+			var xml;
+			if (request_xml.readyState == 4 && request_xml.status == 200) {
+				xml = request_xml.responseXML;
+				x = xml.getElementsByTagName("car");
+				var y,z;
+				var table = "<tr><th>plateNumber</th><th>color</th></tr>";
+				for (var i = 0; i < x.length; i++) {
+					y = x[i].getElementsByTagName("plateNumber")[0].childNodes[0].nodeValue;
+					z = x[i].getElementsByTagName("color")[0].childNodes[0].nodeValue;
+					table += "<tr><td>"+y+"</td><td>"+z+"</td></tr>";
+				}
+				content_xml.innerHTML = table;
+			}
+		}
+
+		var request_json;
+		if (!!window.XMLHttpRequest) {
+			request_json = new XMLHttpRequest();
+		} else {
+			request_json = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		request_json.open("GET", "http://localhost/jsonp/json/xml_json/cars.json");
+		request_json.send();
+
+		request_json.onreadystatechange = function(){
+			var json;
+			if (request_json.readyState == 4 && request_json.status == 200) {
+				json = JSON.parse(request_json.responseText);
+				var y,z;
+				var table = "<tr><th>plateNumber</th><th>color</th></tr>";
+				for (var i = 0; i < json.Cars.length; i++) {
+					y = json.Cars[i].plateNumber;
+					z = json.Cars[i].color;
+					table += "<tr><td>"+y+"</td><td>"+z+"</td></tr>";
+				}
+				content_json.innerHTML = table;
+			}
+		}
+	</script>
+</body>
+</html>

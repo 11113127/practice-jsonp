@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>5</title>
+</head>
+<body>
+	<table id=content_js></table>
+
+	<script>
+		var content_js = document.querySelector("#content_js");
+
+		function setTable(arr){
+			var y,z;
+			var table = "<tr><th>plateNumber</th><th>color</th></tr>";
+			for (var i = 0; i < arr.length; i++) {
+				table += "<tr><td>"+arr[i].plateNumber+"</td><td>"+arr[i].color+"</td></tr>";
+			}
+			content_js.innerHTML = table;
+		}
+	</script>
+	<script src="extend/js.js"></script>
+</body>
+</html>

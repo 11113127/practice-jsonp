@@ -1,0 +1,14 @@
+setTable([
+	{
+	"plateNumber": "ABC-123",
+	"color": "red"
+	},
+	{
+	"plateNumber": "ABC-456",
+	"color": "orange"
+	},
+	{
+	"plateNumber": "ABC-789",
+	"color": "yellow"
+	}
+]);

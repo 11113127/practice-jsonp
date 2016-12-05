@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<Cars>
+  <car>
+    <plateNumber>ABC-123</plateNumber><color>red</color>
+  </car>
+  <car>
+    <plateNumber>ABC-456</plateNumber><color>orange</color>
+  </car>
+  <car>
+    <plateNumber>ABC-789</plateNumber><color>yellow</color>
+  </car>
+</Cars>
